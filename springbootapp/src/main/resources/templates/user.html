@@ -1,55 +1,47 @@
-
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>All Users</title>
+    <title>User Details</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
         }
 
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            margin-bottom: 20px;
-        }
-
-        th, td {
+        .user-details {
             border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
         }
 
-        th {
-            background-color: #f2f2f2;
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
         }
 
+        .button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
-<table border="1">
-    <thead>
-    <tr>
-        <th>Id</th>>
-        <th>Name</th>
-        <th>last_name</th>
-        <th>Email</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="user : ${user}">
-        <td th:text="${user.id}"></td>
-        <td th:text="${user.name}"></td>
-        <td th:text="${user.last_name}"></td>
-        <td th:text="${user.email}"></td>
-    </tr>
-    </tbody>
-</table>
-<a href="/users" class="btn btn-secondary mt-3">Back to Users List</a>
-<br>
-
+<div class="user-details">
+    <h2>User Details</h2>
+    <p><strong>ID:</strong> <span th:text="${user.id}"></span></p>
+    <p><strong>Name:</strong> <span th:text="${user.name}"></span></p>
+    <p><strong>Last Name:</strong> <span th:text="${user.last_name}"></span></p>
+    <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+    <a th:href="@{/users}" class="button">Back to Users List</a>
+</div>
 </body>
 </html>

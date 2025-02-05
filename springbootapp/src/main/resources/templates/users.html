@@ -30,37 +30,41 @@
       background-color: #4CAF50;
       border: none;
       color: white;
-      padding: 10px 15px;
+      padding: 5px 10px;
       text-align: center;
       text-decoration: none;
       display: inline-block;
-      font-size: 14px;
-      margin: 4px 2px;
+      font-size: 12px;
+      margin: 2px;
       cursor: pointer;
     }
 
     .button:hover {
-      background-color: #000cf1;
+      background-color: #45a049;
     }
 
-    .buttonAdd {
-      background-color: #4CAF50;
-      border: none;
-      color: white;
-      padding: 10px 15px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 14px;
-      margin: 4px 2px;
-      cursor: pointer;
-      background: chartreuse;
-      position: relative;
-      left: 10px;
+    .button-delete {
+      background-color: #f44336;
     }
 
-    .buttonAdd:hover {
-      background-color: #000cf1;
+    .button-delete:hover {
+      background-color: #d32f2f;
+    }
+
+    .button-edit {
+      background-color: #ff9800;
+    }
+
+    .button-edit:hover {
+      background-color: #e68900;
+    }
+
+    .button-view {
+      background-color: #2196F3;
+    }
+
+    .button-view:hover {
+      background-color: #1976D2;
     }
   </style>
 </head>
@@ -68,10 +72,11 @@
 <table border="1">
   <thead>
   <tr>
-    <th>Id</th>>
+    <th>Id</th>
     <th>Name</th>
-    <th>last_name</th>
+    <th>Last Name</th>
     <th>Email</th>
+    <th>Actions</th>
   </tr>
   </thead>
   <tbody>
@@ -80,28 +85,14 @@
     <td th:text="${user.name}"></td>
     <td th:text="${user.last_name}"></td>
     <td th:text="${user.email}"></td>
+    <td>
+      <a th:href="@{/edit(id=${user.id})}" class="button button-edit">Edit</a>
+      <a th:href="@{/delete(id=${user.id})}" class="button button-delete">Delete</a>
+      <a th:href="@{/find(id=${user.id})}" class="button button-view">View</a>
+    </td>
   </tr>
   </tbody>
 </table>
-<a th:href="@{/add}" class="buttonAdd">Add User</a>
-<br>
-
-<form action="#" th:action="@{/delete}" method="get">
-  <label for="removeId">Enter ID to remove:</label>
-  <input type="text" id="removeId" name="id" title="Please enter a valid number." required/>
-  <input type="submit" class="button" value="Delete User"/>
-</form>
-
-<form action="#" th:action="@{/find}" method="get">
-  <label for="findId">Enter ID to find:</label>
-  <input type="text" id="findId" name="id" title="Please enter a valid number." required/>
-  <input type="submit" class="button" value="Find User"/>
-</form>
-
-<form action="#" th:action="@{/edit}" method="get">
-  <label for="updateId">Enter ID to update:</label>
-  <input type="text" id="updateId" name="id" title="Please enter a valid number." required/>
-  <input type="submit" class="button" value="Update User"/>
-</form>
+<a th:href="@{/add}" class="button">Add User</a>
 </body>
 </html>
